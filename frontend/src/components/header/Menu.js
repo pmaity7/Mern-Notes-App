@@ -7,10 +7,15 @@ import Popper from "@mui/material/Popper";
 import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
 import Stack from "@mui/material/Stack";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { logout } from "../../actions/userAction";
 
 export default function Menu() {
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
@@ -82,7 +87,15 @@ export default function Menu() {
                     onKeyDown={handleListKeyDown}
                   >
                     <MenuItem onClick={handleClose}>My account</MenuItem>
-                    <MenuItem onClick={handleClose}>Logout</MenuItem>
+                    <MenuItem
+                      onClick={(e) => {
+                        handleClose(e);
+                        dispatch(logout());
+                        navigate("/");
+                      }}
+                    >
+                      Logout
+                    </MenuItem>
                   </MenuList>
                 </ClickAwayListener>
               </Paper>

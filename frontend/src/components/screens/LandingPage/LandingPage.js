@@ -12,10 +12,20 @@ function LandingPage() {
             <p className="subtitle">Keep all your notes in one single space.</p>
           </div>
           <div className="buttonContainer">
-            <Button size="large" variant="contained" className="landingButton">
+            <Button
+              size="large"
+              variant="contained"
+              className="landingButton"
+              href="/login"
+            >
               Login
             </Button>
-            <Button size="large" variant="contained" className="landingButton">
+            <Button
+              size="large"
+              variant="contained"
+              className="landingButton"
+              href="/register"
+            >
               Register
             </Button>
           </div>

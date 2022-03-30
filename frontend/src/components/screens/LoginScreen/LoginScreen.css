@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-button {
+  width: 90px;
+}
+
+@media only screen and (max-width: 600px) {
+  .container {
+    align-items: center;
+  }
+}

@@ -6,8 +6,12 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import Menu from "./Menu";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function Header() {
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
   return (
     <>
       <Box sx={{ flexGrow: 1 }}>
@@ -21,18 +25,23 @@ function Header() {
             ></IconButton>
             <Typography
               variant="h6"
-              component="a"
+              component="div"
               sx={{ flexGrow: 1, textDecoration: "none" }}
-              href="#"
             >
-              Notes App
+              <Link to="/" style={{ textDecoration: "none" }}>
+                Notes App
+              </Link>
             </Typography>
-
-            <Button color="inherit" href="#">
-              My Notes
-            </Button>
-
-            <Menu />
+            {userInfo && (
+              <>
+                <Button color="inherit">
+                  <Link to="/mynotes" style={{ textDecoration: "none" }}>
+                    My Notes
+                  </Link>
+                </Button>
+                <Menu />
+              </>
+            )}
           </Toolbar>
         </AppBar>
       </Box>
