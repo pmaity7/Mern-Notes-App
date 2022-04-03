@@ -28,7 +28,7 @@ function LoginScreen() {
   async function submitHandler(e) {
     e.preventDefault();
     dispatch(login(email, password));
-    navigate("/mynotes");
+    /*navigate("/mynotes");*/
   }
   return (
     <div>

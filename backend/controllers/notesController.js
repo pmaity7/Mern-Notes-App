@@ -2,12 +2,15 @@ const expressAsyncHandler = require("express-async-handler");
 const Note = require("../models/noteModel");
 
 const getNotes = expressAsyncHandler(async (req, res) => {
+  console.log(req.user._id);
   const note = await Note.find({ user: req.user._id });
+  console.log("Note: " + note);
   res.json(note);
 });
 
 const createNote = expressAsyncHandler(async (req, res) => {
   const { title, content, category } = req.body;
+  console.log(req);
   if (!title || !category || !content) {
     res.status(400);
     throw new Error("Please fill all the details");

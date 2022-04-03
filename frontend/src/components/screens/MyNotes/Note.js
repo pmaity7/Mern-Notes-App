@@ -64,7 +64,7 @@ function Note({ note, expanded, handleChange, deleteHandler }) {
             {note.content}
           </Typography>
           <Typography variant="p" component="footer">
-            Created on date
+            {`Created on date ${note.createdAt.slice(0, 10)}`}
           </Typography>
         </AccordionDetails>
       </Accordion>
